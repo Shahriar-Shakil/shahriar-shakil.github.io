@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EdgeProp Hub</title>
+  <meta name="description" content="EdgeProp Trading Hub – official links to Get Funded, Help Center, Blog, Platforms and Community." />
+
+  <!-- DM Sans (bold look like your example) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Optional: GA4 (replace G-XXXXXXXXXX) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <!-- Optional: Meta Pixel (replace YOUR_PIXEL_ID) -->
+  <!--
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return; n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
+      n.queue=[]; t=b.createElement(e); t.async=!0;
+      t.src=v; s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+  /></noscript>
+  -->
+
+  <style>
+    :root{
+      --bg1:#2b2b2b;
+      --bg2:#1e1e1e;
+      --card:#1f1f1f;
+      --cardHover:#222;
+      --border:#333;
+      --text:#fff;
+      --muted:#9ca3af;
+      --accent:#f97316;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(to bottom, var(--bg1), var(--bg2));
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      padding:40px 16px;
+    }
+    .wrap{width:100%;max-width:420px}
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:40px;
+    }
+    .lang{
+      display:flex;
+      gap:12px;
+      font-size:14px;
+    }
+    .lang button{
+      background:none;
+      border:0;
+      padding:0;
+      cursor:pointer;
+      color:#9ca3af;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .lang button.active{color:#fff}
+    .share{
+      width:38px;height:38px;
+      border-radius:999px;
+      background:var(--card);
+      border:1px solid var(--border);
+      color:#d1d5db;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition: all .15s ease;
+      font-size:16px;
+      line-height:1;
+    }
+    .share:hover{border-color:var(--accent); color:#fff}
+    .logo{
+      display:flex;
+      justify-content:center;
+      margin-bottom:40px;
+    }
+    .logo img{height:56px; width:auto}
+    .list{display:flex;flex-direction:column;gap:12px}
+    .item{
+      display:block;
+      text-align:center;
+      padding:16px 16px;
+      border-radius:14px;
+      background:var(--card);
+      border:1px solid var(--border);
+      color:var(--text);
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:-0.2px;
+      transition: all .15s ease;
+    }
+    .item:hover{
+      border-color:var(--accent);
+      background:var(--cardHover);
+    }
+    .footer{
+      margin-top:48px;
+      text-align:center;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .footer-links{
+      margin-top:10px;
+      display:flex;
+      justify-content:center;
+      gap:16px;
+    }
+    .footer a{
+      color:var(--muted);
+      text-decoration:none;
+      transition: color .15s ease;
+    }
+    .footer a:hover{color:#d1d5db}
+    /* Mobile tap feel */
+    @media (max-width:420px){
+      body{padding:28px 14px}
+      .item{padding:15px 14px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- Top Bar -->
+    <div class="topbar">
+      <div class="lang" aria-label="Language selector">
+        <button id="btn-en" class="active" type="button">EN</button>
+        <button id="btn-ro" type="button">RO</button>
+      </div>
+
+      <button class="share" id="shareBtn" type="button" aria-label="Share">
+        ⤴︎
+      </button>
+    </div>
+
+    <!-- Logo Center (no title) -->
+    <div class="logo">
+      <img
+        src="https://edgeprop-email-assets.s3.eu-north-1.amazonaws.com/Orange+%26+White+logo+svg.svg"
+        alt="EdgeProp"
+      />
+    </div>
+
+    <!-- List -->
+    <div class="list" id="list"></div>
+
+    <!-- Footer -->
+    <div class="footer" id="footerText"></div>
+    <div class="footer footer-links">
+      <a href="https://edgeproptrading.com/terms" target="_blank" rel="noopener">Terms</a>
+      <a href="https://edgeproptrading.com/privacy-policy" target="_blank" rel="noopener">Privacy</a>
+    </div>
+  </div>
+
+  <script>
+    // Config
+    const HUB_URL = "https://hub.edgeproptrading.com"; // change if needed
+
+    const content = {
+      en: {
+        items: [
+          { title: "Get Funded with EdgeProp", link: "https://edgeproptrading.com/?plan=edge50" },
+          { title: "Help Center", link: "https://edgeproptrading.com/help-center" },
+          { title: "Blog & Trading Insights", link: "https://edgeproptrading.com/blog" },
+          { title: "Trading Platforms", link: "https://edgeproptrading.com/platforms" },
+          { title: "Community & Discord", link: "https://edgeproptrading.com/discord" },
+        ],
+        footer: "© EdgeProp Trading · Empower Your Edge. Fund Your Future.",
+        shareTitle: "EdgeProp Trading",
+        shareText: "Professional Futures Prop Trading",
+      },
+      ro: {
+        items: [
+          { title: "Get Funded cu EdgeProp", link: "https://edgeproptrading.com/?plan=edge50" },
+          { title: "Help Center", link: "https://edgeproptrading.com/help-center" },
+          { title: "Blog & Educație Trading", link: "https://edgeproptrading.com/blog" },
+          { title: "Platforme de Trading", link: "https://edgeproptrading.com/platforms" },
+          { title: "Comunitate & Discord", link: "https://edgeproptrading.com/discord" },
+        ],
+        footer: "© EdgeProp Trading · Empower Your Edge. Fund Your Future.",
+        shareTitle: "EdgeProp Trading",
+        shareText: "Prop trading profesional pe futures",
+      }
+    };
+
+    // Auto language detect
+    let lang = (navigator.language || "en").toLowerCase().startsWith("ro") ? "ro" : "en";
+
+    const elList = document.getElementById("list");
+    const elFooter = document.getElementById("footerText");
+    const btnEn = document.getElementById("btn-en");
+    const btnRo = document.getElementById("btn-ro");
+
+    function trackClick(label) {
+      // GA4
+      if (window.gtag) {
+        window.gtag("event", "hub_click", {
+          event_category: "Hub",
+          event_label: label
+        });
+      }
+      // Meta Pixel
+      if (window.fbq) {
+        window.fbq("trackCustom", "HubClick", { label });
+      }
+    }
+
+    function render() {
+      // toggle buttons
+      btnEn.classList.toggle("active", lang === "en");
+      btnRo.classList.toggle("active", lang === "ro");
+
+      // list
+      elList.innerHTML = "";
+      content[lang].items.forEach((item) => {
+        const a = document.createElement("a");
+        a.className = "item";
+        a.href = item.link;
+        a.textContent = item.title;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.addEventListener("click", () => trackClick(item.title));
+        elList.appendChild(a);
+      });
+
+      // footer
+      elFooter.textContent = content[lang].footer;
+    }
+
+    btnEn.addEventListener("click", () => { lang = "en"; render(); });
+    btnRo.addEventListener("click", () => { lang = "ro"; render(); });
+
+    // Share button
+    document.getElementById("shareBtn").addEventListener("click", async () => {
+      const t = content[lang];
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: t.shareTitle, text: t.shareText, url: HUB_URL });
+        } else {
+          await navigator.clipboard.writeText(HUB_URL);
+          alert(lang === "ro" ? "Link copiat" : "Link copied");
+        }
+      } catch (e) {
+        // user canceled share, ignore
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
